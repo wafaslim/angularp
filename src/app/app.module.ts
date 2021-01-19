@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsercomponentComponent } from './usercomponent/usercomponent.component';
 import { ArticlesComponent } from './articles/articles.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+// import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 @NgModule({
@@ -19,6 +19,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
     UsercomponentComponent,
     ArticlesComponent,
     ReactiveFormComponent
+    // MatInputModule 
   ],
   imports: [
     BrowserModule,

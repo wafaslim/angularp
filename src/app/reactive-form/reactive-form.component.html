@@ -1,48 +1,54 @@
 <form [formGroup]= "userForm" (ngSubmit)="onSubmit()">
-    <h3>azer</h3>
-    <div >
-        Name : 
-        <input type="text" formControlName="name" >
-        <br>
-    </div>
-    <!-- <div [hidden]="name.valid || name.pristine">error</div>  -->
-    <div *ngIf="userForm.controls['name'].touched && userForm.controls['name'].invalid"><small class='text-danger'> Name is required</small></div> 
-    <!-- <div *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)">
-    <div *ngIf="userForm.controls['name'].required">Please enter your name</div>
-    </div> -->
-        <div *ngIf="userForm.controls.name.errors.minlength">Name must be at least 3 characters long.</div>
-    <div>
-        Email :
-        <input type="text"  formControlName="email" required>
-        <br>
-    </div>
-    <div *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors.required">Email is required</div>
-    <div *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors.pattern">Email must be formatted correctly</div>
+    <h3>{{title}}</h3>
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error *ngIf="userForm.controls.name.invalid">name is required</mat-error>
+        <mat-error *ngIf="userForm.controls.name.errors.minLength">at least 3 characters</mat-error>
+    </mat-form-field>
     <br>
     
+    
+    <mat-form-field appearance="fill">
+       <mat-label>Email</mat-label>
+       <input matInput placeholder="Email" formControlName="email">
+       <mat-error *ngIf="userForm.controls.email.invalid">email is required</mat-error>
+    </mat-form-field>
+    
+    
 
-    <div formGroupName= "paymentInformations">
-        <!-- <h3>qsdf</h3> -->
-    <div>
-        Type de Carte:
-        <input type="text" formControlName="typeCarte" required>
-        <br>
-        Numéro Carte:
-        <input type="text" formControlName="numero">
-        <br>
-        <label for="">Date Expiration</label>
-        <input type="date" formControlName="dateExpiration">
-        <br>
-        <label for="">Code</label>
-        <input type="number" formControlName="code" required minlength="6">
-        <br>
-    </div>
+    <form formGroupName= "paymentInformations">
+         <h3>{{title2}}</h3>
+         <mat-form-field appearance="fill">
+            <mat-label>Type de carte</mat-label>
+            <input matInput placeholder="Type de carte" formControlName="typeCarte">
+            <mat-error *ngIf="userForm.controls.typeCarte.invalid">Type Carte is required</mat-error>
+        </mat-form-field>
+    <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Num Carte</mat-label>
+            <input matInput placeholder="Num Carte" formControlName="numero">
+            <mat-error *ngIf="userForm.controls.numero.invalid">num is required</mat-error>
+        </mat-form-field>
+    <br>    
+        <mat-form-field appearance="fill">
+            <mat-label>Date Expiration</mat-label>
+            <input matInput placeholder="Date expiration" formControlName="dateExpiration">
+            <mat-error *ngIf="userForm.controls.dateExpiration.invalid">Date expiration is required</mat-error>
+        </mat-form-field>
+<br>
+        <mat-form-field appearance="fill">
+            <mat-label>Code</mat-label>
+            <input matInput placeholder="Code" formControlName="code">
+            <mat-error *ngIf="userForm.controls.code.invalid">code is required</mat-error>
+            <mat-error *ngIf="userForm.controls.codee.errors.minLength">at least 16 characters</mat-error>
+        </mat-form-field>
+        
+    </form>
 
         <button type="submit" [disabled]="userForm.invalid">Ajouter</button>
-    
-</div>
 
 </form>
-<!-- <p>
+<p>
     Form Status: {{ userForm.status }}
-  </p> -->
+  </p> 
