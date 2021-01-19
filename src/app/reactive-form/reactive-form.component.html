@@ -1,0 +1,48 @@
+<form [formGroup]= "userForm" (ngSubmit)="onSubmit()">
+    <h3>azer</h3>
+    <div >
+        Name : 
+        <input type="text" formControlName="name" >
+        <br>
+    </div>
+    <!-- <div [hidden]="name.valid || name.pristine">error</div>  -->
+    <div *ngIf="userForm.controls['name'].touched && userForm.controls['name'].invalid"><small class='text-danger'> Name is required</small></div> 
+    <!-- <div *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].dirty || userForm.controls['name'].touched)">
+    <div *ngIf="userForm.controls['name'].required">Please enter your name</div>
+    </div> -->
+        <div *ngIf="userForm.controls.name.errors.minlength">Name must be at least 3 characters long.</div>
+    <div>
+        Email :
+        <input type="text"  formControlName="email" required>
+        <br>
+    </div>
+    <div *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors.required">Email is required</div>
+    <div *ngIf="userForm.controls['email'].touched && userForm.controls['email'].errors.pattern">Email must be formatted correctly</div>
+    <br>
+    
+
+    <div formGroupName= "paymentInformations">
+        <!-- <h3>qsdf</h3> -->
+    <div>
+        Type de Carte:
+        <input type="text" formControlName="typeCarte" required>
+        <br>
+        Numéro Carte:
+        <input type="text" formControlName="numero">
+        <br>
+        <label for="">Date Expiration</label>
+        <input type="date" formControlName="dateExpiration">
+        <br>
+        <label for="">Code</label>
+        <input type="number" formControlName="code" required minlength="6">
+        <br>
+    </div>
+
+        <button type="submit" [disabled]="userForm.invalid">Ajouter</button>
+    
+</div>
+
+</form>
+<!-- <p>
+    Form Status: {{ userForm.status }}
+  </p> -->

@@ -1,0 +1,19 @@
+<p>{{name}}</p>
+<p>{{email}}</p>
+<p>{{adresse}}</p>
+
+<div *ngIf='affich==true'>
+
+   <ul *ngFor='let hobby of hobbies ; let i =index'>
+      <li>{{hobby}}<button (click)="delete(i)">Delete</button></li>
+   </ul>
+</div>
+
+<button (click)="afficher()">{{show}}</button>
+<br><br><br>
+<input type="text" [(ngModel)]='name'>
+<br>
+<input type="text" [(ngModel)]='email'>
+<br>
+<input type="text" [(ngModel)]='adresse'>
+
